@@ -19,76 +19,78 @@ const TradingPlatformPage: React.FC = () => {
     { id: 4, title: "Start Trading & Earn Profits" }
   ];
 
-  const accountTypes = [
+const accounts = [
     {
-      id: "vintage",
       name: "Abcd Vintage",
-      badge: "VINTAGE",
-      badgeColor: "bg-purple-600 text-white",
-      description: "Perfect for advanced, all-level traders looking for consistency and solid growth.",
-      features: {
-        "Who It's For": "Advanced traders",
-        "Initial Capital Requirement": "$10k",
-        "Spread Advantage": "from 0.2 pips",
-        "Trading Fees": "No Commission",
-        "Leverage Capacity": "1:500",
-        "Minimum Lot Size": "0.01",
-        "Trade Execution Limit": "Unlimited",
-        "Open Position Capacity": "Unlimited",
-        "Stop Out Threshold": "50%",
-        "Margin Call Activation": "80%",
-        "Swap Policy": "0%",
-        "Risk Exposure": "High",
-        "Asset Options": "Forex, Crypto, Stocks, Commodities, Indices"
-      },
-      highlight: true
+      subtitle: "Perfect for balanced, all-level traders looking for consistency and solid growth.",
+      initialCapital: "$10k",
+      spread: "from 0.2 pips",
+      commission: "No Commission",
+      leverage: "1:Unlimited",
+      lotSize: "0.01",
+      tradeLimit: "200 trades during peak hours",
+      openPosition: "Unlimited",
+      stopOut: "0%",
+      marginCall: "30%",
+      swapPolicy: "0%",
+      riskExposure: "Moderate",
+      assets: "Forex, Crypto, Stocks, Commodities, Indices",
+      buttonText: "Start Trading",
+      cardClass: "bg-gradient-to-br from-purple-900 to-purple-800"
     },
     {
-      id: "cent",
       name: "Abcd Cent",
-      badge: "CENT",
-      badgeColor: "bg-green-600 text-white",
-      description: "Designed for beginners ready to step into the trading world with minimal risk.",
-      features: {
-        "Who It's For": "Beginners",
-        "Initial Capital Requirement": "$10",
-        "Spread Advantage": "from 0.3 pips",
-        "Trading Fees": "Zero Commission",
-        "Leverage Capacity": "1:500",
-        "Minimum Lot Size": "0.01",
-        "Trade Execution Limit": "Unlimited",
-        "Open Position Capacity": "Unlimited",
-        "Stop Out Threshold": "50%",
-        "Margin Call Activation": "80%",
-        "Swap Policy": "0%",
-        "Risk Exposure": "Low",
-        "Asset Options": "Forex, Crypto, Stocks, Commodities, Indices"
-      }
+      subtitle: "Designed for beginners ready to step into the trading world with minimal risk.",
+      initialCapital: "$10",
+      spread: "from 0.3 pips",
+      commission: "Zero Commission",
+      leverage: "1:Unlimited",
+      lotSize: "Same",
+      tradeLimit: "200 trades during peak hours",
+      openPosition: "Unlimited",
+      stopOut: "0%",
+      marginCall: "30%",
+      swapPolicy: "0%",
+      riskExposure: "Low",
+      assets: "Forex, Crypto, Stocks, Commodities, Indices",
+      buttonText: "Start Trading",
+      cardClass: "bg-gray-800"
     },
     {
-      id: "pro",
       name: "Abcd Pro",
-      badge: "PRO",
-      badgeColor: "bg-blue-600 text-white",
-      description: "Ideal for experienced traders seeking precision, speed, and high-stakes performance.",
-      features: {
-        "Who It's For": "Professional traders",
-        "Initial Capital Requirement": "$500",
-        "Spread Advantage": "from 0.1 pips",
-        "Trading Fees": "No Commission",
-        "Leverage Capacity": "1:500",
-        "Minimum Lot Size": "0.01",
-        "Trade Execution Limit": "Unlimited",
-        "Open Position Capacity": "Unlimited",
-        "Stop Out Threshold": "50%",
-        "Margin Call Activation": "80%",
-        "Swap Policy": "0%",
-        "Risk Exposure": "High",
-        "Asset Options": "Forex, Crypto, Stocks, Commodities, Indices"
-      }
+      subtitle: "Ideal for experienced traders seeking precision, speed, and high-stakes performance.",
+      initialCapital: "$500",
+      spread: "from 0.1 pips",
+      commission: "No Commission",
+      leverage: "1:Unlimited",
+      lotSize: "Same",
+      tradeLimit: "200 trades during peak hours",
+      openPosition: "Unlimited",
+      stopOut: "0%",
+      marginCall: "30%",
+      swapPolicy: "0%",
+      riskExposure: "High",
+      assets: "Forex, Crypto, Stocks, Commodities, Indices",
+      buttonText: "Start Trading",
+      cardClass: "bg-gradient-to-br from-purple-900 to-purple-800"
     }
   ];
 
+  const features = [
+    "Who It's For",
+    "Initial Capital Requirement",
+    "Spread Advantage",
+    "Trading Fees",
+    "Leverage Capacity",
+    "Minimum Lot Size",
+    "Trade Execution Limit",
+    "Open Position Capacity",
+    "Stop Out Threshold",
+    "Margin Call Activation",
+    "Swap Policy",
+    "Risk Exposure",
+    "Asset Options"
+  ];
     useEffect(() => {
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % steps.length);
@@ -227,53 +229,107 @@ Flexible Deposits for Every Trader
             </h1>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
-            {accountTypes.map((account) => (
-              <Card
-                key={account.id}
-                className={`relative bg-slate-800/50 border-slate-700 text-white transition-all duration-300 cursor-pointer hover:bg-slate-800/70 ${
-                  account.highlight
-                    ? "ring-2 ring-purple-400 shadow-2xl scale-105"
-                    : "hover:scale-105"
-                } ${hoveredCard === account.id ? "transform scale-105 shadow-2xl" : ""}`}
-                onMouseEnter={() => setHoveredCard(account.id)}
-                onMouseLeave={() => setHoveredCard(null)}
-              >
-                <CardHeader className="pb-4">
-                  <div className="text-center mb-6">
-                    <Badge className={`${account.badgeColor} px-4 py-2 text-sm font-semibold mb-4`}>
-                      {account.badge}
-                    </Badge>
-                    <h4 className="text-2xl font-bold text-white mb-4">{account.name}</h4>
-                    <p className="text-slate-300 leading-relaxed text-sm">{account.description}</p>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="pt-0">
-                  <div className="space-y-4 mb-8">
-                    {Object.entries(account.features).map(([key, value]) => (
-                      <div key={key} className="flex justify-between items-start py-2 border-b border-slate-700/50">
-                        <span className="text-sm text-slate-400 flex-1 pr-4">{key}</span>
-                        <span className="text-sm font-medium text-white text-right flex-shrink-0">
-                          {value}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <Button 
-                    className={`w-full transition-all duration-300 ${
-                      account.highlight
-                        ? "bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
-                        : "bg-slate-700 hover:bg-slate-600 text-white"
-                    } py-3 rounded-lg font-semibold`}
-                  >
-                    Get Started
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+           <div className="min-h-screen bg-black text-white p-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Feature Labels Column */}
+          <div className="col-span-2 lg:col-span-1">
+            <div className="space-y-4 pt-20 text-center lg:text-left">
+              {features.map((feature, index) => (
+                <div key={index} className="h-16 flex items-center text-gray-300 text-sm font-medium">
+                  {feature}
+                </div>
+              ))}
+            </div>
           </div>
+
+          {/* Account Cards */}
+          {accounts.map((account, accountIndex) => (
+            <div key={accountIndex} className="col-span-1">
+              <div className={`${account.cardClass} rounded-2xl p-6 h-full`}>
+                {/* Header */}
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold mb-3">{account.name}</h2>
+                  <p className="text-sm text-gray-300 leading-relaxed">
+                    {account.subtitle}
+                  </p>
+                </div>
+
+                {/* Features List */}
+                <div className="space-y-4">
+                  {/* Initial Capital */}
+                  <div className="h-16 flex items-center justify-center">
+                    <span className="text-xl font-semibold">{account.initialCapital}</span>
+                  </div>
+
+                  {/* Spread */}
+                  <div className="h-16 flex items-center justify-center">
+                    <span className="text-sm">{account.spread}</span>
+                  </div>
+
+                  {/* Commission */}
+                  <div className="h-16 flex items-center justify-center">
+                    <span className="text-sm">{account.commission}</span>
+                  </div>
+
+                  {/* Leverage */}
+                  <div className="h-16 flex items-center justify-center">
+                    <span className="text-sm">{account.leverage}</span>
+                  </div>
+
+                  {/* Lot Size */}
+                  <div className="h-16 flex items-center justify-center">
+                    <span className="text-sm">{account.lotSize}</span>
+                  </div>
+
+                  {/* Trade Limit */}
+                  <div className="h-16 flex items-center justify-center text-center">
+                    <span className="text-sm">{account.tradeLimit}</span>
+                  </div>
+
+                  {/* Open Position */}
+                  <div className="h-16 flex items-center justify-center">
+                    <span className="text-sm">{account.openPosition}</span>
+                  </div>
+
+                  {/* Stop Out */}
+                  <div className="h-16 flex items-center justify-center">
+                    <span className="text-sm">{account.stopOut}</span>
+                  </div>
+
+                  {/* Margin Call */}
+                  <div className="h-16 flex items-center justify-center">
+                    <span className="text-sm">{account.marginCall}</span>
+                  </div>
+
+                  {/* Swap Policy */}
+                  <div className="h-16 flex items-center justify-center">
+                    <span className="text-sm">{account.swapPolicy}</span>
+                  </div>
+
+                  {/* Risk Exposure */}
+                  <div className="h-16 flex items-center justify-center">
+                    <span className="text-sm">{account.riskExposure}</span>
+                  </div>
+
+                  {/* Assets */}
+                  <div className="h-16 flex items-center justify-center text-center">
+                    <span className="text-sm">{account.assets}</span>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <div className="mt-8 text-center">
+                  <button className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 px-8 py-3 rounded-full text-white font-semibold transition-all duration-200 transform hover:scale-105">
+                    {account.buttonText}
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
         </div>
     
 
