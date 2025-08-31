@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
@@ -13,11 +12,12 @@ const TradingPlatformPage: React.FC = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [revenue, setRevenue] = useState<number>(111111);
   const [offset, setOffset] = useState(0);
-
+  const [blurAmount, setBlurAmount] = useState(0);
 
   const [activeStep, setActiveStep] = useState(0);
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const payoutSectionRef = useRef<HTMLDivElement>(null);
 
   const steps = [
     { id: 1, title: "Register your account" },
@@ -29,6 +29,22 @@ const TradingPlatformPage: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       setOffset(window.scrollY * 0.12); // adjust speed here
+
+      // Blur effect for payout section
+      if (payoutSectionRef.current) {
+        const rect = payoutSectionRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const sectionCenter = rect.top + rect.height / 2;
+        const viewportCenter = windowHeight / 2;
+        
+        // Calculate distance from section center to viewport center
+        const distance = Math.abs(sectionCenter - viewportCenter);
+        const maxDistance = windowHeight / 2;
+        
+        // Calculate blur amount (0 when centered, increases as it moves away)
+        const blur = Math.min(distance / maxDistance * 8, 8); // Max 8px blur
+        setBlurAmount(blur);
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -291,7 +307,10 @@ const TradingPlatformPage: React.FC = () => {
 
 
 
-      <section className="relative w-full flex items-center justify-center text-center overflow-hidden">
+      <section 
+        ref={payoutSectionRef}
+        className="relative w-full flex items-center justify-center text-center overflow-hidden"
+      >
 
 
         {/* Overlay for darkening effect */}
@@ -303,8 +322,13 @@ const TradingPlatformPage: React.FC = () => {
             Payouts
           </span>
 
-          <h2 className="text-3xl md:text-6xl font-medium text-white mb-4">
-            We’ve Paid Out Over <br />
+          <h2 
+            className="text-3xl md:text-6xl font-medium text-white mb-4 transition-all duration-300 ease-out"
+            style={{
+              filter: `blur(${blurAmount}px)`
+            }}
+          >
+            We've Paid Out Over <br />
             <span className="text-white/90">$1M to Traders</span>
           </h2>
 

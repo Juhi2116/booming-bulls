@@ -295,7 +295,7 @@ const TradingPlatformPage: React.FC = () => {
 
 
         {/* Overlay for darkening effect */}
-        <div className="absolute inset-0  bg-[#030014]"></div>
+        <div className="absolute inset-0  "></div>
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center">
@@ -330,17 +330,20 @@ const TradingPlatformPage: React.FC = () => {
         <div className="relative z-10 flex flex-col items-center">
 
           {/* Counter */}
-          <h1 className="text-[15vw] font-semibold bg-gradient-to-t from-purple-400 to-white bg-clip-text text-transparent drop-shadow-lg mb-4">
-            ${revenue.toLocaleString()}<span className="text-purple-400">+</span>
+          <h1 className="text-[15vw] font-medium bg-gradient-to-t from-purple-400 to-white bg-clip-text text-transparent drop-shadow-lg mb-4">
+            ${revenue.toLocaleString()}<span className="from-purple-400 to-white">+</span>
           </h1>
 
           {/* Button */}
           <a
             href="#"
-            className="px-6 py-2 bg-black text-white rounded-xl font-semibold hover:bg-white/80 transition mb-6"
+            className="px-6 py-2 bg-black text-white rounded-xl font-semibold transition mb-6 group"
           >
-            Are you Next? →
+            Are you Next?{" "}
+            <span className="transition group-hover:hidden">→</span>
+            <span className="hidden transition group-hover:inline">↗</span>
           </a>
+
         </div>
       </section>
 
