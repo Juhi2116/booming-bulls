@@ -193,18 +193,18 @@ const TradingPlatformPage: React.FC = () => {
         </div>
         <section
           ref={containerRef}
-          className="relative bg-conatin bg-center  bg-no-repeat before:absolute before:inset-0 before:bg-black/80 before:z-0 m-auto"
-          style={{ backgroundImage: "url('/herobg.png')" }}
+          className="relative bg-cover bg-center bg-no-repeat before:absolute before:inset-0 before:bg-black/80 before:z-0 m-auto"
+
         >
           <div className="max-w-4xl mx-auto relative">
             {/* Central vertical line container */}
             <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1">
               {/* Background line */}
-              <div className="w-full h-full bg-white/10 "></div>
+              <div className="w-full h-full bg-white/10"></div>
 
               {/* Animated progress line */}
               <div
-                className="absolute top-0 left-0 w-full bg-gradient-to-b from-white  transition-all duration-300 ease-out"
+                className="absolute top-0 left-0 w-full bg-gradient-to-b from-white via-purple-400 to-purple-600 transition-all duration-300 ease-out"
                 style={{
                   height: `${lineProgress * 100}%`,
                   boxShadow: lineProgress > 0 ? '0 0 20px rgba(147, 51, 234, 0.1)' : 'none'
@@ -225,24 +225,17 @@ const TradingPlatformPage: React.FC = () => {
                 >
                   {/* Step Number Circle */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
-                   <div
-                      className="relative w-20 h-20 z-10  flex items-center justify-center transition-all duration-500"
-                    >
-                      {/* Red line behind the text */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-[5px] h-24  bg-black z-50"></div>
-                      </div>
+                    <div
+                      className="w-20 h-20 z-10 bg-black flex items-center justify-center transition-all duration-500 "
 
-                      {/* The number */}
+                    >
                       <span
-                        className={`relative z-10 text-6xl font-bold transition-colors duration-500 ${
-                          isActive ? "text-white" : "text-gray-400"
-                        }`}
+                        className={`text-2xl font-bold transition-colors duration-500 ${isActive ? "text-white" : "text-gray-400"
+                          }`}
                       >
                         {String(step.id).padStart(2, "0")}
                       </span>
                     </div>
-
                   </div>
 
                   {/* Step Content */}
