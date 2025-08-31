@@ -1,12 +1,12 @@
 
 "use client";
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, TrendingUp, Users, Shield, Zap } from 'lucide-react';
 import Btn from '@/components/Btn';
+import TimelineComponent from './Home';
 
 const TradingPlatformPage: React.FC = () => {
   // const [activeStep, setActiveStep] = useState<number>(0);
@@ -165,7 +165,7 @@ const TradingPlatformPage: React.FC = () => {
       setDisplayText(fullText.slice(0, i + 1));
       i++;
       if (i === fullText.length) clearInterval(interval);
-    }, 8000); // typing speed
+    }, 200); // typing speed
     return () => clearInterval(interval);
   }, []);
 
@@ -192,104 +192,8 @@ const TradingPlatformPage: React.FC = () => {
             🚀 Sign up. Fund. Trade.
           </p>
         </div>
-        <section
-          ref={containerRef}
-          className="relative bg-conatin bg-center  bg-no-repeat before:absolute before:inset-0 before:bg-black/80 before:z-0 m-auto"
-          style={{ backgroundImage: "url('/herobg.png')" }}
-        >
-          <div className="max-w-4xl mx-auto relative">
-            {/* Central vertical line container */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1">
-              {/* Background line */}
-              <div className="w-full h-full bg-white/10 "></div>
-
-              {/* Animated progress line */}
-              <div
-                className="absolute top-0 left-0 w-full bg-gradient-to-b from-white to-[#9F8BCF]  transition-all duration-300 ease-out"
-                style={{
-                  height: `${lineProgress * 100}%`,
-                  boxShadow: lineProgress > 0 ? '0 0 20px rgba(147, 51, 234, 0.1)' : 'none'
-                }}
-              ></div>
-            </div>
-
-            {steps.map((step, index) => {
-              const isActive = activeStep >= index;
-              const isRight = index % 2 === 0;
-              const stepProgress = Math.max(0, Math.min(1, (lineProgress * steps.length) - index));
-
-              return (
-                <div
-                  key={step.id}
-                  ref={el => stepRefs.current[index] = el}
-                  className="relative flex items-center mb-96 last:mb-0"
-                >
-                  {/* Step Number Circle */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
-                    <div
-                      className="relative w-20 h-20 z-10  flex items-center justify-center transition-all duration-500"
-                    >
-                      {/* Red line behind the text */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-[5px] h-24  bg-black z-50"></div>
-                      </div>
-
-                      {/* The number */}
-                      <span
-                        className={`relative z-10 text-6xl font-bold transition-colors duration-500 ${isActive ? "text-white" : "text-gray-400"
-                          }`}
-                      >
-                        {String(step.id).padStart(2, "0")}
-                      </span>
-                    </div>
-
-                  </div>
-
-                  {/* Step Content */}
-                  <div className="w-full flex items-center">
-                    {isRight ? (
-                      <>
-                        <div className="flex-1" />
-                        <div
-                          className={`flex-1 pl-20 text-left transition-all duration-500 ${isActive
-                            ? 'opacity-100 transform translate-x-0'
-                            : 'opacity-50 transform translate-x-8'
-                            }`}
-                        >
-                          <p className="text-md  text-gray-500 mb-2 transition-colors duration-500">
-                            Step {step.id}
-                          </p>
-                          <h3 className={`text-2xl font-semibold transition-colors duration-500 ${isActive ? 'text-white' : 'text-gray-300'
-                            }`}>
-                            {step.title}
-                          </h3>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <div
-                          className={`flex-1 pr-20 text-right transition-all duration-500 ${isActive
-                            ? 'opacity-100 transform translate-x-0'
-                            : 'opacity-50 transform -translate-x-8'
-                            }`}
-                        >
-                          <p className="text-md  text-gray-500 mb-2 transition-colors duration-500">
-                            Step {step.id}
-                          </p>
-                          <h3 className={`text-2xl font-semibold transition-colors duration-500 ${isActive ? 'text-white' : 'text-gray-300'
-                            }`}>
-                            {step.title}
-                          </h3>
-                        </div>
-                        <div className="flex-1" />
-                      </>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
+        <TimelineComponent/>
+    
         {/* CTA Button */}
        
         <div className="text-center mt-24 mb-36">
