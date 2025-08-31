@@ -11,13 +11,12 @@ import TimelineComponent from './Home';
 const TradingPlatformPage: React.FC = () => {
   // const [activeStep, setActiveStep] = useState<number>(0);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  const [revenue, setRevenue] = useState<number>(999151);
+  const [revenue, setRevenue] = useState<number>(111111);
   const [offset, setOffset] = useState(0);
 
 
   const [activeStep, setActiveStep] = useState(0);
-  const [lineProgress, setLineProgress] = useState(0);
-  const stepRefs = useRef([]);
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   const steps = [
@@ -149,7 +148,7 @@ const TradingPlatformPage: React.FC = () => {
   // Revenue counter animation
   useEffect(() => {
     const interval = setInterval(() => {
-      setRevenue(prev => prev + Math.floor(Math.random() * 100));
+      setRevenue(prev => prev + 1);
     }, 2000);
     return () => clearInterval(interval);
   }, []);
@@ -175,7 +174,7 @@ const TradingPlatformPage: React.FC = () => {
         {/* Background Pattern */}
 
         {/* Hero Title */}
-        <div className="text-center my-28">
+        <div className="text-center mt-28">
           <div className="inline-flex items-center gap-2  backdrop-blur-sm rounded-full px-6 py-2 border border-white/20">
             <span className="text-sm font-medium text-[#9F8BCF]">
               Our Process
@@ -192,11 +191,11 @@ const TradingPlatformPage: React.FC = () => {
             🚀 Sign up. Fund. Trade.
           </p>
         </div>
-        <TimelineComponent/>
-    
+        <TimelineComponent />
+
         {/* CTA Button */}
-       
-        <div className="text-center mt-24 mb-36">
+
+        <div className="text-center mt-6 mb-36">
           <Btn>
             Open FREE Account <ArrowRight className="w-5 h-5" />
           </Btn>
@@ -211,7 +210,7 @@ const TradingPlatformPage: React.FC = () => {
               Compare Plans
             </span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-medium text-white mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-medium text-white  leading-tight">
             {displayText.split("Abcd Pro").length > 1 ? (
               <>
                 Become a{" "}
@@ -224,6 +223,10 @@ const TradingPlatformPage: React.FC = () => {
               displayText
             )}
           </h1>
+          <p className="text-slate-400 text-lg">
+            Flexible Deposits for Every Trader
+
+          </p>
         </div>
 
         <div className="min-h-screen  text-white p-8">
@@ -245,8 +248,8 @@ const TradingPlatformPage: React.FC = () => {
                 <div key={accountIndex} className="col-span-1">
                   <div
                     className={`${accountIndex === 1
-                      ? "text-white rounded-2xl p-6 h-full shadow-lg flex flex-col" // 2nd card (no bg)
-                      : "bg-gradient-to-b from-[#140918] via-[#1a1a2e] to-[#070108] text-white rounded-2xl p-6 h-full shadow-lg flex flex-col bg-bg" // 1st & 3rd card
+                      ? "text-white rounded-2xl p-6 h-full shadow-lg flex flex-col " // 2nd card (no bg)
+                      : "bg-gradient-to-b from-[#140918]  to-[#070108] text-white rounded-2xl p-6 h-full shadow-lg flex flex-col bg-bg" // 1st & 3rd card
                       } ${accountIndex === 1 ? "revolving-border text-white  z-20" : ""}`}
                   >
                     {/* Header */}
@@ -272,7 +275,7 @@ const TradingPlatformPage: React.FC = () => {
 
                     {/* CTA Button */}
                     <div className="mt-6 text-center">
-                      <button className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 px-6 py-2.5 rounded-full text-sm font-semibold transition-transform duration-200 transform hover:scale-105">
+                      <button className="bg-gradient-to-r from-purple-500 to-purple-200  px-6 py-2.5 rounded-2xl text-sm font-semibold transition-transform duration-200 transform hover:scale-105">
                         {account.buttonText}
                       </button>
                     </div>
@@ -296,11 +299,11 @@ const TradingPlatformPage: React.FC = () => {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center">
-          <span className="text-sm uppercase tracking-wide text-white/80 border border-white/30 px-4 py-1 rounded-full mb-6">
+          <span className="text-sm  tracking-wide text-[#9F8BCF] border border-white/30 px-4 py-1 rounded-full mb-6">
             Payouts
           </span>
 
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-6xl font-medium text-white mb-4">
             We’ve Paid Out Over <br />
             <span className="text-white/90">$1M to Traders</span>
           </h2>
