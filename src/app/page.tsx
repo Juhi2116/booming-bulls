@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, TrendingUp, Users, Shield, Zap } from 'lucide-react';
+import Btn from '@/components/Btn';
 
 const TradingPlatformPage: React.FC = () => {
   // const [activeStep, setActiveStep] = useState<number>(0);
@@ -204,7 +205,7 @@ const TradingPlatformPage: React.FC = () => {
 
               {/* Animated progress line */}
               <div
-                className="absolute top-0 left-0 w-full bg-gradient-to-b from-white  transition-all duration-300 ease-out"
+                className="absolute top-0 left-0 w-full bg-gradient-to-b from-white to-[#9F8BCF]  transition-all duration-300 ease-out"
                 style={{
                   height: `${lineProgress * 100}%`,
                   boxShadow: lineProgress > 0 ? '0 0 20px rgba(147, 51, 234, 0.1)' : 'none'
@@ -225,7 +226,7 @@ const TradingPlatformPage: React.FC = () => {
                 >
                   {/* Step Number Circle */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
-                   <div
+                    <div
                       className="relative w-20 h-20 z-10  flex items-center justify-center transition-all duration-500"
                     >
                       {/* Red line behind the text */}
@@ -235,9 +236,8 @@ const TradingPlatformPage: React.FC = () => {
 
                       {/* The number */}
                       <span
-                        className={`relative z-10 text-6xl font-bold transition-colors duration-500 ${
-                          isActive ? "text-white" : "text-gray-400"
-                        }`}
+                        className={`relative z-10 text-6xl font-bold transition-colors duration-500 ${isActive ? "text-white" : "text-gray-400"
+                          }`}
                       >
                         {String(step.id).padStart(2, "0")}
                       </span>
@@ -291,13 +291,11 @@ const TradingPlatformPage: React.FC = () => {
           </div>
         </section>
         {/* CTA Button */}
+       
         <div className="text-center mt-24 mb-36">
-          <Button
-            className="bg-[#6242A5] text-white px-28 py-5 text-md font-semibold rounded-2xl  "
-          >
-            Open FREE Account
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
+          <Btn>
+            Open FREE Account <ArrowRight className="w-5 h-5" />
+          </Btn>
         </div>
       </div>
 
@@ -348,14 +346,13 @@ const TradingPlatformPage: React.FC = () => {
                       } ${accountIndex === 1 ? "revolving-border text-white  z-20" : ""}`}
                   >
                     {/* Header */}
-                    <div className="text-center mb-6 z-50">
+                    <div className="text-center mb-6 z-50 relative">
                       <h2 className="text-lg font-semibold">{account.name}</h2>
                       <p className="text-xs text-gray-400 mt-2">{account.subtitle}</p>
                     </div>
 
                     {/* Features List */}
-                    <div className="flex-1 space-y-4 text-center z-50">
-                      <p className="text-base font-medium  gradient-underline">{account.initialCapital}</p>
+                    <div className="flex-1 space-y-4 text-center z-50 relative">
                       <p className="text-sm text-gray-300 gradient-underline">{account.spread}</p>
                       <p className="text-sm text-gray-300 gradient-underline">{account.commission}</p>
                       <p className="text-sm text-gray-300 gradient-underline">{account.leverage}</p>
@@ -462,9 +459,14 @@ const TradingPlatformPage: React.FC = () => {
             <img
               src="https://framerusercontent.com/images/wPXXd95jZIk3zRQtU2enBhy2g8.png?scale-down-to=512"
               alt="QR Code"
-              className="w-48 h-48 object-contain  p-2 bg-white border-[#2C2D2C] border-12 rounded-xl"
+              className="w-56 h-56 object-contain  p-2 bg-white border-[#2C2D2C] border-12 rounded-xl"
             />
           </div>
+        </div>
+
+        <h1
+          className="absolute text-[10vw] font-bold whitespace-nowrap text-white transition-transform duration-75 top-112"
+        >
           {/* App Store Buttons */}
           <div className="flex gap-4 mt-6 ">
             {/* Foreground image */}
@@ -472,12 +474,11 @@ const TradingPlatformPage: React.FC = () => {
               <img
                 src="https://framerusercontent.com/images/VK7tmBzTRU7cEgNp1WcXO7kHYuA.png"
                 alt="App Store"
-                className="h-36 mt-4 object-contain relative z-10"
+                className="h-16 object-contain relative z-10"
               />
             </a>
           </div>
-
-        </div>
+        </h1>
       </section>
 
     </>

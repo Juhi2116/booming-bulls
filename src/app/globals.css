@@ -156,7 +156,7 @@ body {
   border-radius: inherit;
   background: conic-gradient(from 353deg at 50% 50%, #9f8acf00 124.04138513513513deg, #cbb6fa 186.66385135135135deg, #0000 252.61190878378378deg);
   z-index: -1;
-  animation: spinBorder 4s linear infinite;
+  animation: spinBorder 5s linear infinite;
 }
 
 .revolving-border::after {
@@ -172,7 +172,7 @@ body {
 }
 
 /* Animation */
-@keyframes spinBorder {
+/* @keyframes spinBorder {
   0% {
     transform: rotate(0deg);
   }
@@ -180,7 +180,7 @@ body {
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 
 
 .border_glow:after{
@@ -239,3 +239,48 @@ body {
   transition: ease-in-out 3s;
 }
 
+
+
+
+
+
+
+.revolving-border2 {
+  position: relative;
+  display: inline-block;
+  border-radius: 15px; /* same as button */
+  padding: 2px; /* border thickness */
+  overflow: hidden;
+}
+
+.revolving-border2::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 287deg at 45.6% 44.7%,
+    rgba(0, 0, 0, 0.07) 144.141deg,
+    rgb(203, 182, 250) 178.196deg,
+    rgba(0, 0, 0, 0.36) 330.938deg
+  );
+  animation: spinBorder 10s linear infinite;
+  will-change: transform;
+  z-index: 0;
+}
+
+.revolving-border2 button {
+  position: relative;
+  z-index: 1000;
+  border-radius: inherit;
+}
+
+/* Smooth spin animation */
+@keyframes spinBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
