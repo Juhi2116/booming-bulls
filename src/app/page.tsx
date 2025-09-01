@@ -462,7 +462,7 @@ const TradingPlatformPage: React.FC = () => {
               filter: `blur(${blurAmount}px)`
             }}
           >
-            We've Paid Out Over <br />
+            Weve Paid Out Over <br />
             <span className="text-white/90">$1M to Traders</span>
           </h2>
 
