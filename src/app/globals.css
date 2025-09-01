@@ -156,7 +156,7 @@ body {
   border-radius: inherit;
   background: conic-gradient(from 353deg at 50% 50%, #9f8acf00 124.04138513513513deg, #cbb6fa 186.66385135135135deg, #0000 252.61190878378378deg);
   z-index: -1;
-  animation: spinBorder 5s linear infinite;
+  animation: spinBorder 5s  linear infinite;
 }
 
 .revolving-border::after {
@@ -211,7 +211,7 @@ body {
   bottom: 0;
   height: 1px; /* thickness of the line */
   width: 100%;
-  background: linear-gradient(to right, #070108, white, #070108);
+  background: linear-gradient(to right, #070108, rgb(82, 19, 101), #070108);
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.2); /* soft glow */
   
 }

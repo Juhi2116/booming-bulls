@@ -148,7 +148,7 @@ const TradingPlatformPage: React.FC = () => {
         (scrollStart - containerTop) / (containerHeight - windowHeight + scrollStart)
       ));
 
-      setLineProgress(progress);
+        // setLineProgress(progress);
 
       // Determine active step based on scroll progress
       const stepIndex = Math.floor(progress * steps.length);
@@ -211,7 +211,7 @@ const TradingPlatformPage: React.FC = () => {
 
         {/* CTA Button */}
 
-        <div className="text-center mt-6 mb-36">
+        <div className="text-center mt-6 mb-26">
           <Btn>
             Open FREE Account <ArrowRight className="w-5 h-5" />
           </Btn>
@@ -226,18 +226,31 @@ const TradingPlatformPage: React.FC = () => {
               Compare Plans
             </span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-medium text-white  leading-tight">
-            {displayText.split("Abcd Pro").length > 1 ? (
-              <>
-                Become a{" "}
-                <span className="bg-[#A35CA2] bg-clip-text text-transparent">
-                  Abcd Pro
-                </span>
-                {displayText.split("Abcd Pro")[1]}
-              </>
-            ) : (
-              displayText
-            )}
+          <h1 className="text-5xl md:text-6xl font-medium text-white leading-tight">
+            <span className="block md:hidden text-3xl">{displayText.split("Abcd Pro").length > 1 ? (
+                <>
+                Start Small,{" "}
+                  <span className="bg-[#A35CA2] bg-clip-text text-transparent">
+                    Scale Big
+                  </span>
+                  {displayText.split("Scale Big")[1]}
+                </>
+              ) : (
+                displayText
+              )}</span>
+            <span className="hidden md:block">
+              {displayText.split("Abcd Pro").length > 1 ? (
+                <>
+                  Compare your{" "}
+                  <span className="bg-[#A35CA2] bg-clip-text text-transparent">
+                    Abcd Plan
+                  </span>
+                  {displayText.split("Abcd Pro")[1]}
+                </>
+              ) : (
+                displayText
+              )}
+            </span>
           </h1>
           <p className="text-slate-400 text-lg">
             Flexible Deposits for Every Trader
@@ -245,14 +258,15 @@ const TradingPlatformPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="min-h-screen  text-white p-8">
+        <div className="min-h-screen text-white p-8">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-1 animation_third">
+            {/* Desktop Layout - Hidden on mobile */}
+            <div className="hidden lg:grid grid-cols-4 gap-1 animation_third">
               {/* Feature Labels Column */}
-              <div className="col-span-2 lg:col-span-1">
-                <div className="space-y-4 pt-20 text-center lg:text-left">
+              <div className="col-span-1">
+                <div className="space-y-4 pt-20 text-left">
                   {features.map((feature, index) => (
-                    <p className="text-base font-medium gradient-underline2" key={index}>
+                    <p className="text-sm text-gray-300 gradient-underline" key={index}>
                       {feature}
                     </p>
                   ))}
@@ -276,6 +290,7 @@ const TradingPlatformPage: React.FC = () => {
 
                     {/* Features List */}
                     <div className="flex-1 space-y-4 text-center z-50 relative">
+                      <p className="text-sm text-gray-300 gradient-underline">{account.initialCapital}</p>
                       <p className="text-sm text-gray-300 gradient-underline">{account.spread}</p>
                       <p className="text-sm text-gray-300 gradient-underline">{account.commission}</p>
                       <p className="text-sm text-gray-300 gradient-underline">{account.leverage}</p>
@@ -298,7 +313,126 @@ const TradingPlatformPage: React.FC = () => {
                   </div>
                 </div>
               ))}
+            </div>
 
+            {/* Mobile Layout - Visible only on mobile */}
+            <div className="lg:hidden">
+              {/* Top Row - Features and Plan 1 */}
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {/* Feature Labels Column */}
+                <div className="space-y-4 pt-20">
+                  {features.map((feature, index) => (
+                    <p className="text-sm text-gray-300 gradient-underline text-left" key={index}>
+                      {feature}
+                    </p>
+                  ))}
+                </div>
+
+                {/* Plan 1 - Abcd Vintage */}
+                <div>
+                  <div className="bg-gradient-to-b from-[#140918] to-[#070108] text-white rounded-2xl p-6 h-full shadow-lg flex flex-col">
+                    {/* Header */}
+                    <div className="text-center mb-6">
+                      <h2 className="text-lg font-semibold">{accounts[0].name}</h2>
+                      <p className="text-xs text-gray-400 mt-2">{accounts[0].subtitle}</p>
+                    </div>
+
+                    {/* Features List */}
+                    <div className="flex-1 space-y-4 text-center">
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[0].initialCapital}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[0].spread}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[0].commission}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[0].leverage}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[0].lotSize}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[0].tradeLimit}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[0].openPosition}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[0].stopOut}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[0].marginCall}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[0].swapPolicy}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[0].riskExposure}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[0].assets}</p>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="mt-6 text-center">
+                      <button className="bg-gradient-to-r from-purple-500 to-purple-200 px-6 py-2.5 rounded-2xl text-sm font-semibold transition-transform duration-200 transform hover:scale-105">
+                        {accounts[0].buttonText}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Row - Plan 2 and Plan 3 */}
+              <div className="grid grid-cols-2 gap-4">
+                {/* Plan 2 - Abcd Cent */}
+                <div>
+                  <div className="revolving-border text-white rounded-2xl p-6 h-full shadow-lg flex flex-col z-20">
+                    {/* Header */}
+                    <div className="text-center mb-6 z-50 relative">
+                      <h2 className="text-lg font-semibold">{accounts[1].name}</h2>
+                      <p className="text-xs text-gray-400 mt-2">{accounts[1].subtitle}</p>
+                    </div>
+
+                    {/* Features List */}
+                    <div className="flex-1 space-y-4 text-center z-50 relative">
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[1].initialCapital}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[1].spread}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[1].commission}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[1].leverage}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[1].lotSize}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[1].tradeLimit}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[1].openPosition}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[1].stopOut}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[1].marginCall}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[1].swapPolicy}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[1].riskExposure}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[1].assets}</p>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="mt-6 text-center z-50 relative">
+                      <button className="bg-gradient-to-r from-purple-500 to-purple-200 px-6 py-2.5 rounded-2xl text-sm font-semibold transition-transform duration-200 transform hover:scale-105">
+                        {accounts[1].buttonText}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Plan 3 - Abcd Pro */}
+                <div>
+                  <div className="bg-gradient-to-b from-[#140918] to-[#070108] text-white rounded-2xl p-6 h-full shadow-lg flex flex-col">
+                    {/* Header */}
+                    <div className="text-center mb-6">
+                      <h2 className="text-lg font-semibold">{accounts[2].name}</h2>
+                      <p className="text-xs text-gray-400 mt-2">{accounts[2].subtitle}</p>
+                    </div>
+
+                    {/* Features List */}
+                    <div className="flex-1 space-y-4 text-center">
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[2].initialCapital}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[2].spread}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[2].commission}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[2].leverage}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[2].lotSize}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[2].tradeLimit}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[2].openPosition}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[2].stopOut}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[2].marginCall}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[2].swapPolicy}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[2].riskExposure}</p>
+                      <p className="text-sm text-gray-300 gradient-underline">{accounts[2].assets}</p>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="mt-6 text-center">
+                      <button className="bg-gradient-to-r from-purple-500 to-purple-200 px-6 py-2.5 rounded-2xl text-sm font-semibold transition-transform duration-200 transform hover:scale-105">
+                        {accounts[2].buttonText}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

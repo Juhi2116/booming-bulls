@@ -70,7 +70,7 @@ export default function TimelineComponent() {
       className="relative bg-contain bg-center bg-no-repeat before:absolute before:inset-0 before:bg-black/80 before:z-0 m-auto"
       style={{ 
         backgroundImage: "url('/herobg.png')",
-        minHeight: '200vh' // Ensure enough height for scrolling
+        minHeight: '180vh' // Ensure enough height for scrolling
       }}
     >
       <div className="max-w-4xl mx-auto relative py-20">

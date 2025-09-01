@@ -17,4 +17,4 @@ const Btn: React.FC<AnimatedButtonProps> = ({ children }) => {
   );
 };
 
-export default Btn;
+export default Btn; 
