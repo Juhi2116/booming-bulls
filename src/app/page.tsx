@@ -283,8 +283,8 @@ const TradingPlatformPage: React.FC = () => {
                       } ${accountIndex === 1 ? "revolving-border text-white  z-20" : ""}`}
                   >
                     {/* Header */}
-                    <div className="text-center mb-6 z-50 relative">
-                      <h2 className="text-lg font-semibold">{account.name}</h2>
+                    <div className="text-center mb-2 z-50 relative">
+                      <h2 className="text-2xl font-normal">{account.name}</h2>
                       <p className="text-xs text-gray-400 mt-2">{account.subtitle}</p>
                     </div>
 
@@ -354,8 +354,8 @@ const TradingPlatformPage: React.FC = () => {
                     </div>
 
                     {/* CTA Button */}
-                    <div className="mt-6 text-center">
-                      <button className="bg-gradient-to-r from-purple-500 to-purple-200 px-6 py-2.5 rounded-2xl text-sm font-semibold transition-transform duration-200 transform hover:scale-105">
+                    <div className="mt-6  text-center">
+                      <button className="bg-gradient-to-r text-white from-purple-500 to-purple-200 px-6 py-2.5 rounded-2xl text-sm font-semibold transition-transform duration-200 transform hover:scale-105">
                         {accounts[0].buttonText}
                       </button>
                     </div>

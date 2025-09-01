@@ -137,13 +137,12 @@ body {
   }
 }
 
-/* Revolving border effect */
+/* Revolving border effect *//* Updated revolving-border class to fix button visibility */
 .revolving-border {
   position: relative;
-  z-index: 0;
+  z-index: 1;
   overflow: hidden;
   border-radius: 1rem;
-  /* same as rounded-2xl */
 }
 
 .revolving-border::before {
@@ -156,32 +155,38 @@ body {
   border-radius: inherit;
   background: conic-gradient(from 353deg at 50% 50%, #9f8acf00 124.04138513513513deg, #cbb6fa 186.66385135135135deg, #0000 252.61190878378378deg);
   z-index: -1;
-  animation: spinBorder 5s  linear infinite;
+  animation: spinBorder 5s linear infinite;
 }
 
 .revolving-border::after {
   content: "";
   position: absolute;
   inset: 2px;
-  /* inner padding so border looks visible */
   border-radius: inherit;
   background: hsl(295, 100%, 2%);
-  /* red-700 card background */
-  z-index: 1;
-  /* color: #ffffff; */
+  z-index: 1; /* Changed from 0 to 1 */
 }
 
-/* Animation */
-/* @keyframes spinBorder {
+/* Ensure all content inside revolving-border has higher z-index */
+.revolving-border > * {
+  position: relative;
+  z-index: 10;
+}
+
+/* Specific fix for the button */
+.revolving-border button {
+  position: relative;
+  z-index: 20;
+}
+
+@keyframes spinBorder {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
-} */
-
+}
 
 .border_glow:after{
     content: "";
