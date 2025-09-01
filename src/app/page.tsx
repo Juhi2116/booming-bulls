@@ -199,9 +199,9 @@ const TradingPlatformPage: React.FC = () => {
           <h1 className="text-5xl md:text-6xl font-medium text-white mb-6 leading-tight">
             Become a{" "}
             <span className=" bg-[#A35CA2] bg-clip-text text-transparent">
-              Abcd Pro
+              Abcd Pro {" "}
             </span>
-            in sec...
+             in sec...
           </h1>
           <p className="text-slate-400 text-lg">
             🚀 Sign up. Fund. Trade.
